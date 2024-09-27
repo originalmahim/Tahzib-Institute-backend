@@ -24,8 +24,8 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(
     cors({
-        // origin: 'http://localhost:5173', // frontend link
-         origin: "*",
+         origin: 'https://tahzibinstitute.netlify.app', // frontend link
+        //  origin: "*",
         credentials: true
     })
 );
