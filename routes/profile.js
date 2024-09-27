@@ -21,7 +21,7 @@ const {
 // Delete User Account
 router.delete('/deleteProfile', auth, deleteAccount);
 router.put('/updateProfile', auth, updateProfile);
-router.get('/getUserDetails', auth, getUserDetails);
+router.get('/getUserDetails', auth,  getUserDetails);
 
 
 // Get Enrolled Courses

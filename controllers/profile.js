@@ -123,11 +123,59 @@ exports.deleteAccount = async (req, res) => {
 
 
 // ================ get details of user ================
+// exports.getUserDetails = async (req, res) => {
+//     try {
+//         const userId = req.user.id; // Extract userId
+//         console.log(userId);
+//         const userDetails = await User.findById(userId).populate('additionalDetails').exec();
+
+//         // Check if userDetails is found
+//         if (!userDetails) {
+//             return res.status(404).json({
+//                 success: false,
+//                 message: 'User not found'
+//             });
+//         }
+
+//         // Add _id to the response manually
+//         res.status(200).json({
+//             success: true,
+//             data: {
+//                 _id: userDetails._id, // Manually add _id here
+//                 firstName: userDetails.firstName,
+//                 lastName: userDetails.lastName,
+//                 email: userDetails.email,
+//                 accountType: userDetails.accountType,
+//                 active: userDetails.active,
+//                 approved: userDetails.approved,
+//                 additionalDetails: userDetails.additionalDetails,
+//                 courses: userDetails.courses,
+//                 image: userDetails.image,
+//                 courseProgress: userDetails.courseProgress,
+//                 createdAt: userDetails.createdAt,
+//                 updatedAt: userDetails.updatedAt,
+//                 __v: userDetails.__v,
+//                 token: userDetails.token // Include token if necessary
+//             },
+//             message: 'User data fetched successfully'
+//         });
+//     } catch (error) {
+//         console.log('Error while fetching user details:', error);
+//         res.status(500).json({
+//             success: false,
+//             error: error.message,
+//             message: 'Error while fetching user details'
+//         });
+//     }
+// };
+
+
+
+// ================ Update User profile Image ================
 exports.getUserDetails = async (req, res) => {
     try {
         // extract userId
         const userId = req.user.id;
-        console.log('id - ', userId);
 
         // get user details
         const userDetails = await User.findById(userId).populate('additionalDetails').exec();
@@ -151,8 +199,6 @@ exports.getUserDetails = async (req, res) => {
 }
 
 
-
-// ================ Update User profile Image ================
 exports.updateUserProfileImage = async (req, res) => {
     try {
         const profileImage = req.files?.profileImage;
